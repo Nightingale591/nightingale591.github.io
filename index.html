@@ -1,10 +1,132 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Ongoya The Great</title>
+  <meta charset="UTF-8">
+  <title>Ongoya The Great Laundry</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #222;
+    }
+
+    header {
+      background: #1f6feb;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    section {
+      padding: 30px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: #1f6feb;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #174fb8;
+    }
+
+    .prices li {
+      margin: 6px 0;
+    }
+
+    .whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #25D366;
+      color: white;
+      padding: 14px 18px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-  <h1>Ongoya The Great Laundry</h1>
-  <p>Smart. Clean. Reliable.</p>
+
+<header>
+  <h1>Ongoya The Great</h1>
+  <p>Premium Laundry • Smart Service • Pickup & Delivery</p>
+</header>
+
+<section>
+  <div class="card">
+    <h2>About Us</h2>
+    <p>
+      Ongoya The Great is your trusted laundry partner. We offer fast,
+      affordable, and professional cleaning with pickup and delivery at your
+      convenience.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Our Prices</h2>
+    <ul class="prices">
+      <li>👕 Shirts & T-Shirts — KES 80</li>
+      <li>👖 Trousers & Jeans — KES 120</li>
+      <li>🧥 Jackets — KES 200</li>
+      <li>🛏️ Duvets — KES 350</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Order Pickup</h2>
+    <form id="orderForm">
+      <input type="text" placeholder="Your Name" required>
+      <input type="tel" placeholder="Phone Number" required>
+      <input type="text" placeholder="Your Location" required>
+      <input type="number" placeholder="Estimated Amount (KES)" required>
+      <button type="submit">Place Order</button>
+    </form>
+    <p id="points">Your Loyalty Points: 0 ⭐</p>
+  </div>
+
+  <div class="card">
+    <h2>Loyalty Program</h2>
+    <p>Every KES 100 spent earns you ⭐ 1 point.</p>
+    <p>50 points = Free wash or discount.</p>
+  </div>
+</section>
+
+<a class="whatsapp" href="https://wa.me/254710546206">WhatsApp Us</a>
+
+<script>
+  document.getElementById("orderForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const amount = document.querySelector("input[type='number']").value;
+    const points = Math.floor(amount / 100);
+    document.getElementById("points").innerText =
+      "Your Loyalty Points: " + points + " ⭐";
+    alert("Order received! You earned " + points + " points.");
+  });
+</script>
+
 </body>
 </html>
