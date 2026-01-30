@@ -1,136 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Ongoya The Great Laundry</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      color: #222;
-    }
-
-    header {
-      background: #1f6feb;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    section {
-      padding: 30px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      margin: 15px 0;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,.1);
-    }
-
-    input, button {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      background: #1f6feb;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #174fb8;
-    }
-
-    .prices li {
-      margin: 6px 0;
-    }
-
-    .whatsapp {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      background: #25D366;
-      color: white;
-      padding: 14px 18px;
-      border-radius: 40px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Your Order - Ongoya The Great Laundry</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header class="hero">
+        <h1>Place Your Order</h1>
+        <p>Fill in the details and select your laundry items</p>
+    </header>
 
-<header>
-  <h1>Ongoya The Great</h1>
-  <p>Premium Laundry • Smart Service • Pickup & Delivery</p>
-</header>
+    <section class="order-form">
+        <form id="laundryForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
 
-<section>
-  <div class="card">
-    <h2>About Us</h2>
-    <p>
-      Ongoya The Great is your trusted laundry partner. We offer fast,
-      affordable, and professional cleaning with pickup and delivery at your
-      convenience.
-    </p>
-  </div>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
 
-  <div class="card">
-    <h2>Our Prices</h2>
-    <ul class="prices">
-      <li>👕 Shirts & T-Shirts — KES 80</li>
-      <li>👖 Trousers & Jeans — KES 120</li>
-      <li>🧥 Jackets — KES 200</li>
-      <li>🛏️ Duvets — KES 350</li>
-    </ul>
-  </div>
+            <label for="address">Pickup Address:</label>
+            <textarea id="address" name="address" required></textarea>
 
-  <div class="card">
-    <h2>Order Pickup</h2>
-    <form id="orderForm">
-      <input type="text" placeholder="Your Name" required>
-      <input type="tel" placeholder="Phone Number" required>
-      <input type="text" placeholder="Your Location" required>
-      <input type="number" placeholder="Estimated Amount (KES)" required>
-      <button type="submit">Place Order</button>
-    </form>
-    <p id="points">Your Loyalty Points: 0 ⭐</p>
-  </div>
+            <label for="pickup">Pickup Date & Time:</label>
+            <input type="datetime-local" id="pickup" name="pickup" required>
 
-  <div class="card">
-    <h2>Loyalty Program</h2>
-    <p>Every KES 100 spent earns you ⭐ 1 point.</p>
-    <p>50 points = Free wash or discount.</p>
-  </div>
-</section>
+            <h3>Choose Items:</h3>
 
-<a class="whatsapp" href="https://wa.me/254710546206">WhatsApp Us</a>
+            <!-- Comforters and Duvets -->
+            <label>Comforters & Duvets:</label>
+            <select id="comforters" name="comforters">
+                <option value="0">None</option>
+                <option value="250">3.5*6 - 250</option>
+                <option value="300">4*6 - 300</option>
+                <option value="350">5*6 - 350</option>
+                <option value="550">6*6 - 550</option>
+            </select>
 
-<script>
-  document.getElementById("orderForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const amount = document.querySelector("input[type='number']").value;
-    const points = Math.floor(amount / 100);
-    document.getElementById("points").innerText =
-      "Your Loyalty Points: " + points + " ⭐";
-    alert("Order received! You earned " + points + " points.");
-  });
-</script>
+            <!-- Carpets -->
+            <label>Carpets:</label>
+            <select id="carpets" name="carpets">
+                <option value="0">None</option>
+                <option value="250">Fluffy - 250</option>
+                <option value="350">Soft Carpet - 350</option>
+                <option value="600">Hard - 600</option>
+                <option value="150">Bathroom Mat - 150</option>
+            </select>
 
+            <!-- Clothes -->
+            <label>Clothes:</label>
+            <select id="clothes" name="clothes">
+                <option value="0">None</option>
+                <option value="250">Small Basket - 250</option>
+                <option value="350">Medium Basket - 350</option>
+                <option value="450">Large Basket - 450</option>
+                <option value="500">Suits - 500</option>
+                <option value="150">Jackets - 150</option>
+                <option value="100">Towels - 100</option>
+            </select>
+
+            <!-- Others -->
+            <label>Other Items:</label>
+            <select id="others" name="others">
+                <option value="0">None</option>
+                <option value="50">Door Mats - 50</option>
+                <option value="70">Shoes (per pair) - 70</option>
+                <option value="70">Curtains (per piece) - 70</option>
+            </select>
+
+            <h3>Total: <span id="total">0</span> KES</h3>
+            <button type="button" id="calculateBtn">Calculate Total</button>
+            <button type="submit">Proceed to MPesa Payment</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Ongoya The Great Laundry Services</p>
+    </footer>
+
+    <script src="order.js"></script>
 </body>
-</html><a class="whatsapp" href="https://wa.me/254710546206">WhatsApp Us</a><a href="https://mpesa.co.ke/lipa/7812664" target="_blank">
-  Pay Now via M-Pesa
-</a><button type="button" onclick="window.open('https://mpesa.co.ke/lipa/7812664', '_blank')">
-  Pay KES 100 via M-Pesa
-</button>
+</html>
